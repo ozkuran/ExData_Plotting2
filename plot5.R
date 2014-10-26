@@ -1,0 +1,10 @@
+source("loadData.R")
+library(ggplot2)
+vehicleSubset <- subset(SCC,Data.Category=='Onroad')$SCC
+vehicleData <- subset(NEI,NEI$SCC %in% vehicleSubset)
+vehicleDataBaltimore <- subset(vehicleData,vehicleData$fips=="24510")
+vehicleEmissionData <-  aggregate(x=vehicleDataBaltimore$Emissions,by=list(year=vehicleDataBaltimore$year),FUN=sum)
+png("plot5.png")
+g <- ggplot(vehicleEmissionData, aes(x=year, y=x))
+g + labs( x="Year", y="Total emisions in Tons", title=expression("Vehicle Related Emissionin Baltimore"))+ geom_point(size = 3) + geom_line() + theme_bw()
+dev.off()
