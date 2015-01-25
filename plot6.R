@@ -23,3 +23,4 @@ png("plot6.png" , width = 900, height = 800)
 g <- ggplot(mainData, aes(y=Difference, x=year, group=Location, color=Location))
 g + labs( x="Year", y="Total emisions change Percentage", title=expression("Vehicle Related Emissions Change in Baltimore & Los Angeles from 1999"))+ geom_point(size = 3) + geom_line() + theme_bw()
 dev.off()
+
