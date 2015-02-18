@@ -1,7 +1,0 @@
-source("loadData.R")
-NEI_B<-subset(NEI,fips=="24510")
-emissionDataBalt <- tapply(NEI_B$Emissions, NEI_B$year, sum)
-years <- unique(NEI_B$year)
-png("plot2.png")
-plot(years, emissionDataBalt, type = "o", main = "Total PM2.5 Emission from All Sources in Baltimore", xlab="Year", ylab="Total emisions in Tons")
-dev.off()

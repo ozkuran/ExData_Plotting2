@@ -1,8 +1,0 @@
-source("loadData.R")
-library(ggplot2)
-coalData <- subset(SCC, grepl("Coal", EI.Sector, ignore.case = TRUE))
-coalEmissionData <-  aggregate(Emissions~year, merge(NEI, coalData, by = "SCC", all = FALSE), sum)
-png("plot4.png")
-g <- ggplot(coalEmissionData, aes(x=year, y=Emissions))
-g + labs( x="Year", y="Total emisions in Tons", title=expression("Coal Related Emission"))+ geom_point(size = 3) + geom_line() + theme_bw()
-dev.off()

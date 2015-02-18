@@ -1,8 +1,0 @@
-source("loadData.R")
-library(ggplot2)
-NEI_B<-subset(NEI,fips=="24510")
-emissionDataBalt <- aggregate(NEI_B$Emissions, list(type=NEI_B$type, year=NEI_B$year), sum)
-png("plot3.png")
-g <- ggplot(data = emissionDataBalt, aes(x=year, y=x, color=type, group=type))
-g + labs( x="Year", y="Total emisions in Tons", title=expression("Total PM2.5 Emission from All Sources in Baltimore"))+ geom_point(size = 3) + geom_line() + theme_bw()
-dev.off()

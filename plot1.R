@@ -1,6 +1,0 @@
-source("loadData.R")
-emissionData <- tapply(NEI$Emissions/1000000, NEI$year, sum)
-years <- unique(NEI$year)
-png("plot1.png")
-plot(years, emissionData, type = "o", main = "Total PM2.5 Emission from All Sources", xlab="Year", ylab="Total emisions in Million of Tons")
-dev.off()
